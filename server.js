@@ -13,7 +13,11 @@ app.use(express.json());
 
 // ==================== GOOGLE SHEETS SETUP ====================
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(__dirname, 'credentials.json'),
+  credentials: {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    project_id: process.env.GOOGLE_PROJECT_ID
+  },
   scopes: ['https://www.googleapis.com/auth/spreadsheets']
 });
 
@@ -62,7 +66,7 @@ app.post('/api/send-pdf', async (req, res) => {
   const mailOptions = {
     from: `"Muy Bien Español" <${process.env.MAIL_USER}>`,
     to: email,
-    subject: '🎁 Your Free Spanish Guide',
+    subject: '🎁 Your Free Spanish PDF Guide',
     text: `Hola ${name},\n\nAquí tienes tu guía para aprender español. ¡Gracias por unirte!\n\nUn abrazo,\nMuy Bien Español`,
     attachments: [
       {
