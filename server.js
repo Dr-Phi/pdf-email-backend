@@ -66,8 +66,8 @@ app.post('/api/send-pdf', async (req, res) => {
   const mailOptions = {
     from: `"Muy Bien Español" <${process.env.MAIL_USER}>`,
     to: email,
-    subject: '🎁 Your Free Spanish PDF Guide',
-    text: `Hola ${name},\n\nAquí tienes tu guía para aprender español. ¡Gracias por unirte!\n\nUn abrazo,\nMuy Bien Español`,
+    subject: '🎁 Your Free Spanish PDF Guide is here',
+    text: `Hello ${name},\n\n I'm Elias, and as promised, here's your free PDF guide "The One Thing"\n revealing the exercise that top language learners consistently use to accelerate their progress.\nThis is not just theory, but a practical and proven exercise that I have personally used to speak English fluently.\nI also regularly share strategies, insights, and powerful resources to help you become effortlessly fluent in Spanish and truly connect in meaningful conversations.\n Join our vibrant Spanish learning COMMUNITY on WhatsApp! https://chat.whatsapp.com/BDgeEScNTa4LFzGZnCIIy2\n\nWith warmth and excitement,\nElias Rojas\nMuy Bien Español`,
     attachments: [
       {
         filename: 'spanish-guide.pdf',
